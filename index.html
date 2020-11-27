@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Match Me</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <nav class="navbar-container app-navbar">
+        <div class="nav_left"><img id="logo" class="nav_left" src="images/icon.png"></div>
+        <div class="nav_right">
+            <a href="#"><img id="refresh" src="images/refresh.png" title="Refresh" alt="Refresh"></a>
+            <a href="#"><img id="male" class="img_male_female" src="images/male.png" title="Seeking Male" alt="Male" disabled></a>
+            <a href="#"><img id="female" class="img_male_female" src="images/female.png" title="Seeking Female" alt="Female"></a>
+        </div>
+    </nav>
+
+    <div id="results"></div>
+    <div id="div_load_more"><button id="btn_load_more">Load More</button></div>
+
+    <script id="menu-template" type="text/x-handlebars-template">
+        {{#if this.length}}
+            {{#each this}}
+                <div>
+                    <figure class="card">
+                        <div class="image"><img src="{{pic}}" title="{{first}} {{last}}" alt="{{first}} {{last}}" onclick="alert(`My name is {{first}} {{last}}, {{age}} years old.\nI live in {{city}}, {{country}}.\n\nContact me: {{phone}}`);"></div>
+                        <figcaption>
+                            <div class="date">
+                                <span>{{age}}</span>
+                                <span class="nat">{{nat}}</span>
+                            </div>
+                            <h3>{{title}}. {{first}} {{last}}</h3>
+                            <span class="details">Lives in {{city}} city.</span>
+                            <span class="details">Contact me: {{phone}}</span>
+                        </figcaption>
+                    </figure>
+                </div>
+            {{/each}}
+        {{/if}}
+    </script>
+</body>
+
+</html>
